@@ -27,7 +27,7 @@ public class GrArticlesApplication extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("forward:/author-list.xhtml");
+		registry.addViewController("/").setViewName("/author/author-list.xhtml");
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		super.addViewControllers(registry);
 	}

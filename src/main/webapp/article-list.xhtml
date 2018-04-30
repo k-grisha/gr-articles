@@ -6,10 +6,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<ui:composition template="author.xhtml">
+<ui:composition template="article.xhtml">
     <ui:define name="content">
         <h:form id="form">
-            <p:panel header="Authors List" >
+            <p:panel header="Article List" >
                 <p:dataTable id="table" var="article" value="#{articleJsfController.getArticles()}" >
                     <p:column>
                         <f:facet name="header"># Id</f:facet>

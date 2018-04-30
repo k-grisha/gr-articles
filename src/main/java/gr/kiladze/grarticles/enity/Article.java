@@ -1,27 +1,25 @@
 package gr.kiladze.grarticles.enity;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "gr_article")
-public class Article {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+public class Article extends AbstractModel {
 
 	private String title;
 	private String summary;
 	@Lob
 	private String content;
-	@OneToOne
-	@JoinColumn(name = "main_info_id", nullable = false)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "AUTHOR_ID", nullable = false)
 	private Author author;
 	private Boolean published;
 	private LocalDate localDate;

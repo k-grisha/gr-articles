@@ -1,9 +1,13 @@
 package gr.kiladze.grarticles.jsf;
 
+import com.google.common.collect.Lists;
 import gr.kiladze.grarticles.enity.Author;
 import gr.kiladze.grarticles.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 public class AuthorJsfController {
@@ -14,16 +18,16 @@ public class AuthorJsfController {
 	public String save() {
 		authorService.save(author);
 		author = new Author();
-		return "author-list.xhtml";
+		return "list.xhtml";
 	}
 
 	public void delete(Long id) {
 		authorService.delete(id);
 	}
 
-	public String edit(Long id){
+	public String edit(Long id) {
 		author = authorService.findById(id);
-		return "author-form.xhtml";
+		return "form.xhtml";
 	}
 
 	public Author getAuthor() {
@@ -32,7 +36,15 @@ public class AuthorJsfController {
 
 	//todo Optimize need
 	public Iterable<Author> getAuthors() {
-		return authorService.getAllAuthors();
+		return authorService.getAll();
 	}
+
+	public Map<String, Long> getMappedAuthors() {
+		Map<String, Long> map = Lists.newArrayList(authorService.getAll()).stream()
+				.collect(Collectors.toMap(Author::getName, a -> a.getId()));
+
+		return map;
+	}
+
 
 }

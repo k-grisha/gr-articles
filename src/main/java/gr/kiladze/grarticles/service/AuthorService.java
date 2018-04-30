@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 public class AuthorService {
 
@@ -21,7 +19,7 @@ public class AuthorService {
 	}
 
 	@Transactional(readOnly = true)
-	public Iterable<Author> getAllAuthors() {
+	public Iterable<Author> getAll() {
 		return authorRepository.findAll();
 	}
 
@@ -31,7 +29,7 @@ public class AuthorService {
 	}
 
 	@Transactional(readOnly = true)
-	public Author findById(Long id){
+	public Author findById(Long id) {
 		return authorRepository.findOne(id);
 	}
 }
