@@ -4,9 +4,11 @@ import com.google.common.collect.Lists;
 import gr.kiladze.grarticles.enity.AbstractModel;
 import gr.kiladze.grarticles.enity.Category;
 import gr.kiladze.grarticles.service.CategoryService;
+import org.primefaces.context.RequestContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.faces.application.FacesMessage;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -18,6 +20,14 @@ public class CategoryJsfController {
 	private Category category = new Category();
 
 	public String save() {
+		if (categoryService.findByName(category.getName()) != null) {
+			RequestContext.getCurrentInstance().showMessageInDialog(
+					new FacesMessage(FacesMessage.SEVERITY_ERROR,
+							"Category name must by unique",
+							"Category \"" + category.getName() + "\" exist"));
+			return "#";
+		}
+
 		categoryService.save(category);
 		category = new Category();
 		return "list.xhtml";

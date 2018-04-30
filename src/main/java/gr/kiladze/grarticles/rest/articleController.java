@@ -9,13 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class articleController {
 
-	@Autowired
-	AuthorService authorService;
 
-	@GetMapping("/hello")
-	public String hello(){
-		return "HellO";
-	}
 
 	@GetMapping("/save")
 	public String save(){

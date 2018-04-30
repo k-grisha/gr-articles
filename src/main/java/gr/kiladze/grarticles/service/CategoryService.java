@@ -14,8 +14,8 @@ public class CategoryService {
 	CategoryRepository categoryRepository;
 
 	@Transactional
-	public void save(Category author) {
-		categoryRepository.save(author);
+	public void save(Category category) {
+		categoryRepository.save(category);
 	}
 
 	@Transactional(readOnly = true)
@@ -31,6 +31,11 @@ public class CategoryService {
 	@Transactional(readOnly = true)
 	public Category findById(Long id) {
 		return categoryRepository.findOne(id);
+	}
+
+	@Transactional(readOnly = true)
+	public Category findByName(String name) {
+		return categoryRepository.findByName(name);
 	}
 
 }
