@@ -5,6 +5,8 @@ import gr.kiladze.grarticles.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class ArticleJsfController {
 	@Autowired
@@ -14,6 +16,7 @@ public class ArticleJsfController {
 	private Article article = new Article();
 
 	public String save() {
+		article.setDate(new Date());
 		articleService.save(article, authorId);
 		article = new Article();
 		return "article-list.xhtml";
@@ -43,6 +46,10 @@ public class ArticleJsfController {
 	//todo Optimize need
 	public Iterable<Article> getArticles() {
 		return articleService.getAllArticles();
+	}
+
+	public void updateStatus(Article article) {
+		articleService.updateStatus(article);
 	}
 
 }

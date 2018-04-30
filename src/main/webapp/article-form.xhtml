@@ -16,19 +16,22 @@
                     <h:message for="title" style="color:red"/>
 
                     <p:outputLabel for="summary" value="Summary: "/>
-                    <p:inputTextarea id="summary" value="#{articleJsfController.getArticle().summary}" required="true"
+                    <p:inputTextarea id="summary" style="width: 600px;" value="#{articleJsfController.getArticle().summary}" required="true"
                                  requiredMessage="Summary is required"/>
                     <h:message for="summary" style="color:red"/>
 
-                    <p:outputLabel for="content" value="Summary: "/>
-                    <p:inputTextarea id="content" value="#{articleJsfController.getArticle().content}" required="true"
-                                     requiredMessage="Summary is required"/>
+                    <p:outputLabel for="content" value="Content: "/>
+                    <p:inputTextarea id="content" style="width: 600px;" value="#{articleJsfController.getArticle().content}" required="true"
+                                     requiredMessage="Content is required"/>
                     <h:message for="content" style="color:red"/>
 
                     <p:outputLabel  value="Author: "/>
                     <h:selectOneMenu value="#{articleJsfController.authorId}">
                         <f:selectItems value="#{authorJsfController.getMappedAuthors()}" />
                     </h:selectOneMenu>
+
+                    <p:outputLabel  value="Published: "/>
+                    <h:selectBooleanCheckbox value="#{articleJsfController.getArticle().published}"/>
 
                     <h:commandButton value="Save" action="#{articleJsfController.save()}"/>
                 </h:panelGrid>

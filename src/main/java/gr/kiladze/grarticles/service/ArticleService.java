@@ -41,6 +41,12 @@ public class ArticleService {
 		articleRepository.delete(id);
 	}
 
+	@Transactional
+	public void updateStatus(Article article) {
+		Article foundArticle = articleRepository.findOne(article.getId());
+		foundArticle.setPublished(article.getPublished());
+	}
+
 	@Transactional(readOnly = true)
 	public Article findById(Long id) {
 		return articleRepository.findOne(id);

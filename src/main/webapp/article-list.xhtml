@@ -9,8 +9,8 @@
 <ui:composition template="article.xhtml">
     <ui:define name="content">
         <h:form id="form">
-            <p:panel header="Article List" >
-                <p:dataTable id="table" var="article" value="#{articleJsfController.getArticles()}" >
+            <p:panel header="Article List">
+                <p:dataTable id="table" var="article" value="#{articleJsfController.getArticles()}">
                     <p:column>
                         <f:facet name="header"># Id</f:facet>
                         <h:outputText value="#{article.id}"/>
@@ -23,10 +23,24 @@
                         <f:facet name="header">Author</f:facet>
                         <h:outputText value="#{article.author.name}"/>
                     </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Published</f:facet>
+                        <h:outputText value="#{article.published==true?'YES':'NO'}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Date</f:facet>
+                        <h:outputText value="#{article.date}">
+                            <f:convertDateTime pattern="dd.MM.yyyy HH:mm"/>
+                        </h:outputText>
+                    </p:column>
+
                     <p:column>
                         <f:facet name="header">actions</f:facet>
-                        <p:commandButton update="form" value="Delete" action="#{articleJsfController.delete(article.id)}"/>
-                        <p:commandButton value="Edit"  action="#{articleJsfController.edit(article.id)}"  />
+                        <p:commandButton update="form" value="Delete"
+                                         action="#{articleJsfController.delete(article.id)}"/>
+                        <p:commandButton value="Edit" action="#{articleJsfController.edit(article.id)}"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @SpringBootApplication
 @EnableTransactionManagement
@@ -27,7 +27,7 @@ public class GrArticlesApplication extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("/author/author-list.xhtml");
+		registry.addViewController("/").setViewName("/article-list.xhtml");
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		super.addViewControllers(registry);
 	}
@@ -42,21 +42,21 @@ public class GrArticlesApplication extends WebMvcConfigurerAdapter {
 					"In these tutorials on template based webpage development with JSF 2.x and Facelets, we've kept the basic layout page pretty simple. We have defined the various page elements with the ui:insert tag, and then within those tags, we've simply spit out a word like Heading or Footer or Messages, right there inside the layout.xhtml page itself. This is acceptable in a tutorial, but normally, each individual page element, be it the header, footer, right navigation pane and even the content window would normally go in a separate file. For example, anything to do with the footer should go in a file of its own, likely named footer.xhtml. Here is what the code would look like if we factored out the various page elements into their own files",
 					new Author("Billi", 22),
 					true,
-					LocalDate.now()));
+					new Date()));
 			repository.save(new Article(
 					"Title",
 					"Some summary",
 					"Some content Some content Some content Some content Some content",
 					new Author("Romeo", 33),
 					false,
-					LocalDate.now()));
+					new Date()));
 			repository.save(new Article(
 					"Title2",
 					"summary-2",
 					"content-2 content-2 content-2 content-2 ",
 					new Author("Ivan", 44),
 					true,
-					LocalDate.now()));
+					new Date()));
 
 //			repository.save(new Author("Billi", 22));
 //			repository.save(new Author("Romeo", 33));
