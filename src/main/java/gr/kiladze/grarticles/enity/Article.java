@@ -1,18 +1,18 @@
 package gr.kiladze.grarticles.enity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "gr_article")
 public class Article extends AbstractModel {
 
 	private String title;
@@ -23,16 +23,10 @@ public class Article extends AbstractModel {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "AUTHOR_ID", nullable = false)
 	private Author author;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "CATEGORY_ID", nullable = false)
+	private Category category;
 	private Boolean published;
 	private Date date;
 
-
-	public Article(String title, String summary, String content, Author author, Boolean published, Date date) {
-		this.title = title;
-		this.summary = summary;
-		this.content = content;
-		this.author = author;
-		this.published = published;
-		this.date = date;
-	}
 }

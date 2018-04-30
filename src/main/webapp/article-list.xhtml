@@ -10,8 +10,8 @@
     <ui:define name="content">
         <h:form id="form">
             <p:panel header="Article List">
-                <p:dataTable id="table" var="article" value="#{articleJsfController.getArticles()}">
-                    <p:column>
+                <p:dataTable id="table" var="article" value="#{articleJsfController.getArticles()}"  paginator="true" rows="5">
+                    <p:column width="30">
                         <f:facet name="header"># Id</f:facet>
                         <h:outputText value="#{article.id}"/>
                     </p:column>
@@ -22,6 +22,11 @@
                     <p:column>
                         <f:facet name="header">Author</f:facet>
                         <h:outputText value="#{article.author.name}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Category</f:facet>
+                        <h:outputText value="#{article.category.name}"/>
                     </p:column>
 
                     <p:column>

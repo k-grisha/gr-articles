@@ -30,6 +30,12 @@
                         <f:selectItems value="#{authorJsfController.getMappedAuthors()}" />
                     </h:selectOneMenu>
 
+                    <p:outputLabel  value="Category: "/>
+                    <h:selectOneMenu value="#{articleJsfController.categoryId}">
+                        <f:selectItems value="#{categoryJsfController.getMappedCategories()}"/>
+
+                    </h:selectOneMenu>
+
                     <p:outputLabel  value="Published: "/>
                     <h:selectBooleanCheckbox value="#{articleJsfController.getArticle().published}"/>
 

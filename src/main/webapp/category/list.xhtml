@@ -9,24 +9,25 @@
 <ui:composition template="/article.xhtml">
     <ui:define name="content">
         <h:form id="form">
-            <p:panel header="Authors List" >
-                <p:dataTable id="table" var="author" value="#{authorJsfController.getAuthors()}"  paginator="true" rows="5">
+            <p:panel header="Category List">
+                <p:dataTable id="table" var="category" value="#{categoryJsfController.getCategories()}"  paginator="true" rows="5">
                     <p:column width="30">
                         <f:facet name="header"># Id</f:facet>
-                        <h:outputText value="#{author.id}"/>
+                        <h:outputText value="#{category.id}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">Name</f:facet>
-                        <h:outputText value="#{author.name}"/>
+                        <h:outputText value="#{category.name}"/>
                     </p:column>
                     <p:column>
-                        <f:facet name="header">Age</f:facet>
-                        <h:outputText value="#{author.age}"/>
+                        <f:facet name="header">Description</f:facet>
+                        <h:outputText value="#{category.description}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">actions</f:facet>
-                        <p:commandButton update="form" value="Delete" action="#{authorJsfController.delete(author.id)}"/>
-                        <p:commandButton value="Edit"  action="#{authorJsfController.edit(author.id)}"  />
+                        <p:commandButton update="form" value="Delete"
+                                         action="#{categoryJsfController.delete(category.id)}"/>
+                        <p:commandButton value="Edit" action="#{categoryJsfController.edit(category.id)}"/>
                     </p:column>
                 </p:dataTable>
             </p:panel>

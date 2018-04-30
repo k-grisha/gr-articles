@@ -1,6 +1,7 @@
 package gr.kiladze.grarticles.jsf;
 
 import gr.kiladze.grarticles.enity.Article;
+import gr.kiladze.grarticles.enity.Category;
 import gr.kiladze.grarticles.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,11 +14,12 @@ public class ArticleJsfController {
 	private ArticleService articleService;
 
 	private Long authorId;
+	private Long categoryId;
 	private Article article = new Article();
 
 	public String save() {
 		article.setDate(new Date());
-		articleService.save(article, authorId);
+		articleService.save(article, authorId, categoryId);
 		article = new Article();
 		return "article-list.xhtml";
 	}
@@ -28,7 +30,17 @@ public class ArticleJsfController {
 
 	public String edit(Long id) {
 		article = articleService.findById(id);
+		categoryId = article.getCategory().getId();
+		authorId = article.getAuthor().getId();
 		return "article-form.xhtml";
+	}
+
+	public Long getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(Long categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public Long getAuthorId() {

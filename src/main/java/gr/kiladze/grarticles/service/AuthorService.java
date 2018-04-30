@@ -15,7 +15,6 @@ public class AuthorService {
 	@Transactional
 	public void save(Author author) {
 		authorRepository.save(author);
-		System.out.println(author);
 	}
 
 	@Transactional(readOnly = true)

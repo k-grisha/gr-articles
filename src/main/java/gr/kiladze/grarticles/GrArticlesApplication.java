@@ -2,6 +2,7 @@ package gr.kiladze.grarticles;
 
 import gr.kiladze.grarticles.enity.Article;
 import gr.kiladze.grarticles.enity.Author;
+import gr.kiladze.grarticles.enity.Category;
 import gr.kiladze.grarticles.repository.ArticleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +42,7 @@ public class GrArticlesApplication extends WebMvcConfigurerAdapter {
 					"When creating a web page template with JSF, a developer needs to know the difference between ui:insert and ui:include.",
 					"In these tutorials on template based webpage development with JSF 2.x and Facelets, we've kept the basic layout page pretty simple. We have defined the various page elements with the ui:insert tag, and then within those tags, we've simply spit out a word like Heading or Footer or Messages, right there inside the layout.xhtml page itself. This is acceptable in a tutorial, but normally, each individual page element, be it the header, footer, right navigation pane and even the content window would normally go in a separate file. For example, anything to do with the footer should go in a file of its own, likely named footer.xhtml. Here is what the code would look like if we factored out the various page elements into their own files",
 					new Author("Billi", 22),
+					new Category("News","World news"),
 					true,
 					new Date()));
 			repository.save(new Article(
@@ -48,6 +50,7 @@ public class GrArticlesApplication extends WebMvcConfigurerAdapter {
 					"Some summary",
 					"Some content Some content Some content Some content Some content",
 					new Author("Romeo", 33),
+					new Category("Cookie","The Best Recipes"),
 					false,
 					new Date()));
 			repository.save(new Article(
@@ -55,6 +58,7 @@ public class GrArticlesApplication extends WebMvcConfigurerAdapter {
 					"summary-2",
 					"content-2 content-2 content-2 content-2 ",
 					new Author("Ivan", 44),
+					new Category("Other","Uncategorized articles"),
 					true,
 					new Date()));
 
