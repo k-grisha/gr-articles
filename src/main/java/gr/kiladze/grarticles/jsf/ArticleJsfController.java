@@ -15,12 +15,17 @@ public class ArticleJsfController {
 
 	private Long authorId;
 	private Long categoryId;
-	private Article article = new Article();
+	private Article article;
+
+	public ArticleJsfController(){
+		article = new Article();
+		article.setDate(new Date());
+	}
 
 	public String save() {
-		article.setDate(new Date());
 		articleService.save(article, authorId, categoryId);
 		article = new Article();
+		article.setDate(new Date());
 		return "article-list.xhtml";
 	}
 

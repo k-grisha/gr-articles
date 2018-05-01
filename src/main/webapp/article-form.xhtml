@@ -39,6 +39,9 @@
                     <p:outputLabel  value="Published: "/>
                     <h:selectBooleanCheckbox value="#{articleJsfController.getArticle().published}"/>
 
+                    <p:outputLabel  value="Published date: "/>
+                    <p:calendar value="#{articleJsfController.getArticle().date}" />
+
                     <h:commandButton value="Save" action="#{articleJsfController.save()}"/>
                 </h:panelGrid>
             </p:panel>

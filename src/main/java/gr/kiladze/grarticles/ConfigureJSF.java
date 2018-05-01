@@ -30,6 +30,7 @@ public class ConfigureJSF implements ServletContextAware {
 	public void setServletContext(ServletContext servletContext) {
 		servletContext.setInitParameter("com.sun.faces.forceLoadConfiguration", Boolean.TRUE.toString());
 		servletContext.setInitParameter("javax.faces.FACELETS_SKIP_COMMENTS", "true");
+		servletContext.setInitParameter("javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE", "true");
 	}
 
 }
