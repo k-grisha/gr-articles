@@ -1,7 +1,7 @@
-
 #### Requirements
 * JDK 1.8
 * Maven 3 
+
 
 #### Package source code
 Unpack archive to any folder and move to the new folder
@@ -16,6 +16,7 @@ java -jar gr-articles-0.0.1-SNAPSHOT.war
 try it out [http://localhost:8080/](http://localhost:8080/)
 
 
+
 #### Tools
 [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) - REST API specification
 
@@ -24,7 +25,8 @@ JDBC URL: jdbc:h2:mem:gr_article
 user: sa
 pass:
 
-####F eature
+
+#### Feature
 * Administration panel for Articles, Authors and Categories
 * Functionalities for Add, Delete and Edit all resources
 * Functionalities for associate Articles with Category and Author
