@@ -1,7 +1,12 @@
 package gr.kiladze.grarticles.enity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+/**
+ * Base Class for Entity
+ */
 @MappedSuperclass
 public class AbstractModel {
 	@Id

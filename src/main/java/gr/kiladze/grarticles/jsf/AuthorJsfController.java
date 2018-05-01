@@ -9,6 +9,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Authors Controller for JSF page
+ */
 @Component
 public class AuthorJsfController {
 	@Autowired
@@ -34,15 +37,18 @@ public class AuthorJsfController {
 		return author;
 	}
 
-	//todo Optimize need
-	public Iterable<Author> getAuthors() {
-		return authorService.getAll();
-	}
-
+	/**
+	 * Get Map of Authors for <h:selectOneMenu>
+	 * @return map of label-value pairs where label is Author name and value is Author ID
+	 */
 	public Map<String, Long> getMappedAuthors() {
 		return authorService.getAll().stream()
 				.collect(Collectors.toMap(Author::getName, AbstractModel::getId));
 	}
 
+	//todo Optimize need
+	public Iterable<Author> getAuthors() {
+		return authorService.getAll();
+	}
 
 }

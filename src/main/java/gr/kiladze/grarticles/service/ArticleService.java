@@ -29,11 +29,13 @@ public class ArticleService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	@Transactional
-	public void save(Article article) {
-		articleRepository.save(article);
-	}
-
+	/**
+	 * Save article
+	 *
+	 * @param article    to save
+	 * @param authorId   id of related author
+	 * @param categoryId id of related category
+	 */
 	@Transactional
 	public void save(Article article, Long authorId, Long categoryId) {
 		Author author = authorRepository.findOne(authorId);
@@ -49,27 +51,44 @@ public class ArticleService {
 		articleRepository.save(article);
 	}
 
+	/**
+	 * Get all articles
+	 *
+	 * @return List of articles
+	 */
 	@Transactional(readOnly = true)
 	public List<Article> getAllArticles() {
 		return Lists.newArrayList(articleRepository.findAll());
 	}
 
+	/**
+	 * Delete by Id
+	 */
 	@Transactional
 	public void delete(Long id) {
 		articleRepository.delete(id);
 	}
 
-	@Transactional
-	public void updateStatus(Article article) {
-		Article foundArticle = articleRepository.findOne(article.getId());
-		foundArticle.setPublished(article.getPublished());
-	}
-
+	/**
+	 * Find only one article by id
+	 *
+	 * @param id of article to delete
+	 * @return article
+	 */
 	@Transactional(readOnly = true)
 	public Article findById(Long id) {
 		return articleRepository.findOne(id);
 	}
 
+	/**
+	 * Get Paginal Articles list.
+	 * Size of page defined in {@link ArticleService#PAGE_SIZE}
+	 *
+	 * @param pageNumber page number start from 0
+	 * @param direction  of sort
+	 * @param sort       fields list for sorting
+	 * @return list of Articles
+	 */
 	@Transactional(readOnly = true)
 	public List<Article> findSortedPage(Integer pageNumber, Sort.Direction direction, List<String> sort) {
 		PageRequest request;

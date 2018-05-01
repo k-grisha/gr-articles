@@ -1,7 +1,6 @@
 package gr.kiladze.grarticles.service;
 
 import com.google.common.collect.Lists;
-import gr.kiladze.grarticles.enity.Author;
 import gr.kiladze.grarticles.enity.Category;
 import gr.kiladze.grarticles.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
