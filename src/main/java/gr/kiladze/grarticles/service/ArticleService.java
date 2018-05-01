@@ -8,13 +8,19 @@ import gr.kiladze.grarticles.repository.ArticleRepository;
 import gr.kiladze.grarticles.repository.AuthorRepository;
 import gr.kiladze.grarticles.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
 @Service
 public class ArticleService {
+
+	private static final int PAGE_SIZE = 5;
 
 	@Autowired
 	private ArticleRepository articleRepository;
@@ -62,5 +68,17 @@ public class ArticleService {
 	@Transactional(readOnly = true)
 	public Article findById(Long id) {
 		return articleRepository.findOne(id);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Article> findSortedPage(Integer pageNumber, Sort.Direction direction, List<String> sort) {
+		PageRequest request;
+		if (CollectionUtils.isEmpty(sort)) {
+			request = new PageRequest(pageNumber, PAGE_SIZE);
+		} else {
+			request = new PageRequest(pageNumber, PAGE_SIZE, direction, sort.toArray(new String[sort.size()]));
+		}
+		Page<Article> page = articleRepository.findAll(request);
+		return page.getContent();
 	}
 }
