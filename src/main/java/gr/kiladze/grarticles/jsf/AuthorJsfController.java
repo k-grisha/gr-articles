@@ -1,6 +1,5 @@
 package gr.kiladze.grarticles.jsf;
 
-import com.google.common.collect.Lists;
 import gr.kiladze.grarticles.enity.AbstractModel;
 import gr.kiladze.grarticles.enity.Author;
 import gr.kiladze.grarticles.service.AuthorService;
@@ -41,9 +40,8 @@ public class AuthorJsfController {
 	}
 
 	public Map<String, Long> getMappedAuthors() {
-		Map<String, Long> map = Lists.newArrayList(authorService.getAll()).stream()
+		return authorService.getAll().stream()
 				.collect(Collectors.toMap(Author::getName, AbstractModel::getId));
-		return map;
 	}
 
 

@@ -1,6 +1,5 @@
 package gr.kiladze.grarticles.jsf;
 
-import com.google.common.collect.Lists;
 import gr.kiladze.grarticles.enity.AbstractModel;
 import gr.kiladze.grarticles.enity.Category;
 import gr.kiladze.grarticles.service.CategoryService;
@@ -54,15 +53,8 @@ public class CategoryJsfController {
 
 
 	public Map<String, Long> getMappedCategories() {
-		Map<String, Long> map = Lists.newArrayList(categoryService.getAll()).stream()
+		return categoryService.getAll().stream()
 				.collect(Collectors.toMap(Category::getName, AbstractModel::getId));
-		return map;
 	}
-
-//	public Map<String, Category> getMappedCategories() {
-//		Map<String, Category> map = Lists.newArrayList(categoryService.getAll()).stream()
-//				.collect(Collectors.toMap(Category::getName, a -> a));
-//		return map;
-//	}
 
 }

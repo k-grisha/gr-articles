@@ -1,5 +1,6 @@
 package gr.kiladze.grarticles.service;
 
+import com.google.common.collect.Lists;
 import gr.kiladze.grarticles.enity.Article;
 import gr.kiladze.grarticles.enity.Author;
 import gr.kiladze.grarticles.enity.Category;
@@ -9,6 +10,8 @@ import gr.kiladze.grarticles.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class ArticleService {
@@ -41,8 +44,8 @@ public class ArticleService {
 	}
 
 	@Transactional(readOnly = true)
-	public Iterable<Article> getAllArticles() {
-		return articleRepository.findAll();
+	public List<Article> getAllArticles() {
+		return Lists.newArrayList(articleRepository.findAll());
 	}
 
 	@Transactional

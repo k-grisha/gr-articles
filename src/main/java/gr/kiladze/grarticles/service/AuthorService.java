@@ -1,10 +1,13 @@
 package gr.kiladze.grarticles.service;
 
+import com.google.common.collect.Lists;
 import gr.kiladze.grarticles.enity.Author;
 import gr.kiladze.grarticles.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class AuthorService {
@@ -18,8 +21,8 @@ public class AuthorService {
 	}
 
 	@Transactional(readOnly = true)
-	public Iterable<Author> getAll() {
-		return authorRepository.findAll();
+	public List<Author> getAll() {
+		return Lists.newArrayList(authorRepository.findAll());
 	}
 
 	@Transactional

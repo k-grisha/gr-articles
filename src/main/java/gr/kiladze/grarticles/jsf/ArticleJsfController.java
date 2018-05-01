@@ -1,7 +1,6 @@
 package gr.kiladze.grarticles.jsf;
 
 import gr.kiladze.grarticles.enity.Article;
-import gr.kiladze.grarticles.enity.Category;
 import gr.kiladze.grarticles.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,7 +16,7 @@ public class ArticleJsfController {
 	private Long categoryId;
 	private Article article;
 
-	public ArticleJsfController(){
+	public ArticleJsfController() {
 		article = new Article();
 		article.setDate(new Date());
 	}
